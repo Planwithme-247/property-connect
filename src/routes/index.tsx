@@ -34,6 +34,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const { t } = useT();
   return (
     <Layout>
       {/* HERO */}
@@ -50,26 +51,26 @@ function Index() {
         </div>
         <div className="container-tight pt-14 pb-20 md:pt-24 md:pb-32">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-3 py-1 text-xs font-medium text-foreground/80 backdrop-blur">
-            <Sparkles className="h-3.5 w-3.5 text-gold" /> Maryland • DC • Virginia
+            <Sparkles className="h-3.5 w-3.5 text-gold" /> {t("hero.badge")}
           </span>
           <h1 className="mt-5 max-w-3xl font-display text-4xl font-semibold leading-[1.05] text-foreground sm:text-5xl md:text-6xl">
-            Find Your Next Home With Confidence
+            {t("hero.title")}
           </h1>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Professional tenant placement and property marketing services across Maryland, DC, and Virginia — verified listings, fast response, English & Spanish support.
+            {t("hero.sub")}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               to="/rentals"
               className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-7 text-base font-semibold text-primary-foreground shadow-soft transition-transform hover:scale-[1.02]"
             >
-              Browse Available Rentals <ArrowRight className="h-4 w-4" />
+              {t("cta.browse")} <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
-              to="/list-property"
+              to="/rentals"
               className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-border bg-background/90 px-7 text-base font-semibold text-foreground backdrop-blur transition-colors hover:bg-background"
             >
-              List Your Property
+              {t("cta.schedule")}
             </Link>
           </div>
         </div>
@@ -115,13 +116,13 @@ function Index() {
       {/* HOW IT WORKS */}
       <section className="bg-secondary/50 py-14 md:py-20">
         <div className="container-tight">
-          <p className="text-xs font-semibold uppercase tracking-widest text-primary">How it works</p>
-          <h2 className="mt-2 font-display text-3xl font-semibold sm:text-4xl">A simple path to your next home</h2>
+          <p className="text-xs font-semibold uppercase tracking-widest text-primary">{t("how.eyebrow")}</p>
+          <h2 className="mt-2 font-display text-3xl font-semibold sm:text-4xl">{t("how.title")}</h2>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {[
-              { icon: Search, title: "Browse verified rentals", body: "Explore homes across MD, DC, and VA — all screened and market-ready." },
-              { icon: ClipboardCheck, title: "Apply in minutes", body: "Submit your application online. We respond fast, in English or Spanish." },
-              { icon: HomeIcon, title: "Move in with confidence", body: "Sign, get keys, and settle in — with a team that stands behind the listing." },
+              { icon: Search, title: t("how.s1.t"), body: t("how.s1.b") },
+              { icon: CalendarCheck, title: t("how.s2.t"), body: t("how.s2.b") },
+              { icon: ClipboardCheck, title: t("how.s3.t"), body: t("how.s3.b") },
             ].map((s, i) => (
               <div key={s.title} className="rounded-2xl border border-border bg-card p-6 shadow-card">
                 <div className="flex items-center gap-3">
@@ -137,6 +138,8 @@ function Index() {
           </div>
         </div>
       </section>
+
+
 
       {/* OWNER CTA */}
       <section className="container-tight py-14 md:py-20">
