@@ -49,7 +49,7 @@ export function PropertyCard({ p, priority = false }: { p: Property; priority?: 
         </div>
         <div className="mt-3 flex items-center justify-between border-t border-border pt-3">
           <span className="text-xs text-muted-foreground">Ref {p.id}</span>
-          <span className="text-sm font-semibold text-primary">I'm Interested →</span>
+          <span className="text-sm font-semibold text-primary">Request Tour →</span>
         </div>
       </div>
     </Link>
