@@ -99,7 +99,7 @@ function ApplyPage() {
                 <Field label="Anything we should know? (optional)"><TextArea /></Field>
               </div>
               <button className="mt-2 h-12 rounded-full bg-primary text-sm font-semibold text-primary-foreground shadow-soft sm:col-span-2">
-                Submit Application
+                Submit Application + Pay Screening Fee
               </button>
             </form>
           )}
