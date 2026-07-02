@@ -1,16 +1,18 @@
 import { Link } from "@tanstack/react-router";
 import { Menu, X, Home } from "lucide-react";
 import { useState } from "react";
-
-const nav = [
-  { to: "/rentals", label: "Rentals" },
-  { to: "/list-property", label: "List Property" },
-  { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
-] as const;
+import { useT } from "@/lib/i18n";
+import { LanguageToggle } from "./LanguageToggle";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const { t } = useT();
+  const nav = [
+    { to: "/rentals" as const, label: t("nav.rentals") },
+    { to: "/list-property" as const, label: t("nav.list") },
+    { to: "/about" as const, label: t("nav.about") },
+    { to: "/contact" as const, label: t("nav.contact") },
+  ];
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
       <div className="container-tight flex h-16 items-center justify-between">
@@ -18,8 +20,8 @@ export function Header() {
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-primary text-primary-foreground">
             <Home className="h-4 w-4" />
           </span>
-          <span className="hidden sm:inline">Affordable Property Marketing</span>
-          <span className="sm:hidden">APM</span>
+          <span className="hidden sm:inline">APMM</span>
+          <span className="sm:hidden">APMM</span>
         </Link>
         <nav className="hidden items-center gap-7 md:flex">
           {nav.map((n) => (
@@ -33,20 +35,24 @@ export function Header() {
               {n.label}
             </Link>
           ))}
+          <LanguageToggle />
           <Link
-            to="/apply"
+            to="/rentals"
             className="inline-flex items-center rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition-transform hover:scale-[1.02]"
           >
-            Apply Now
+            {t("cta.requestTour")}
           </Link>
         </nav>
-        <button
-          aria-label="Toggle menu"
-          className="grid h-10 w-10 place-items-center rounded-lg border border-border md:hidden"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <LanguageToggle />
+          <button
+            aria-label="Toggle menu"
+            className="grid h-10 w-10 place-items-center rounded-lg border border-border"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
       {open && (
         <div className="border-t border-border bg-background md:hidden">
@@ -62,11 +68,11 @@ export function Header() {
               </Link>
             ))}
             <Link
-              to="/apply"
+              to="/rentals"
               onClick={() => setOpen(false)}
               className="mt-1 rounded-lg bg-primary px-3 py-3 text-center text-base font-semibold text-primary-foreground"
             >
-              Apply Now
+              {t("cta.requestTour")}
             </Link>
           </div>
         </div>
