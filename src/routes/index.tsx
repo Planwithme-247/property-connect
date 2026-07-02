@@ -1,9 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Building2, ClipboardCheck, Search, ShieldCheck, Sparkles, Home as HomeIcon } from "lucide-react";
+import { ArrowRight, Building2, ClipboardCheck, Search, ShieldCheck, Sparkles, CalendarCheck } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { TrustBar } from "@/components/site/TrustBar";
 import { PropertyCard } from "@/components/site/PropertyCard";
 import { featured, properties } from "@/lib/properties";
+import { useT } from "@/lib/i18n";
 import heroImg from "@/assets/hero-home.jpg";
 
 export const Route = createFileRoute("/")({
