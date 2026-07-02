@@ -2,16 +2,16 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Bath, Bed, Check, MapPin, Ruler, ShieldAlert } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { Field, Select, TextArea, TextInput } from "@/components/site/Field";
-import { getProperty, properties } from "@/lib/properties";
+import { getProperty, properties, type Property } from "@/lib/properties";
 import { useState } from "react";
 
 export const Route = createFileRoute("/rentals/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): Property => {
     const p = getProperty(params.slug);
     if (!p) throw notFound();
     return p;
   },
-  head: ({ loaderData }) => {
+  head: ({ loaderData }: { loaderData?: Property }) => {
     const p = loaderData;
     if (!p) return { meta: [{ title: "Rental not found" }] };
     return {
