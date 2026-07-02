@@ -124,26 +124,21 @@ function PropertyDetail() {
         </div>
       </section>
 
-      {/* INTEREST FORM */}
+      {/* TOUR REQUEST FORM */}
       <section className="container-tight pb-16">
         <div className="grid gap-8 rounded-3xl border border-border bg-card p-6 shadow-card md:grid-cols-2 md:p-10">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-primary">I'm Interested</p>
-            <h2 className="mt-2 font-display text-2xl font-semibold sm:text-3xl">Request more info on {p.title}</h2>
+            <p className="text-xs font-semibold uppercase tracking-widest text-primary">Request a Tour</p>
+            <h2 className="mt-2 font-display text-2xl font-semibold sm:text-3xl">Tour {p.title} first</h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Send a quick inquiry and our team will respond within one business day — in English or Spanish.
+              No application required yet — pick a preferred date and we'll confirm shortly. After the tour, you'll get your application link (screening fee applies at that step).
             </p>
-            <div className="mt-6">
-              <Link to="/apply" className="inline-flex rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground">
-                Ready to apply? Start full application →
-              </Link>
-            </div>
           </div>
           <div>
             {sent ? (
               <div className="rounded-2xl border border-primary/30 bg-primary/5 p-6 text-center">
-                <h3 className="font-display text-xl font-semibold">Thanks — we received your inquiry.</h3>
-                <p className="mt-2 text-sm text-muted-foreground">Our team will reach out shortly with next steps and the exact address after qualification.</p>
+                <h3 className="font-display text-xl font-semibold">Tour request received</h3>
+                <p className="mt-2 text-sm text-muted-foreground">We'll confirm your tour time shortly by phone, WhatsApp, or email. Application comes after the tour.</p>
               </div>
             ) : (
               <form
@@ -154,13 +149,16 @@ function PropertyDetail() {
                 <Field label="Full Name">
                   <TextInput required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
                 </Field>
-                <Field label="Phone">
+                <Field label="Phone / WhatsApp">
                   <TextInput required type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
                 </Field>
                 <Field label="Email">
                   <TextInput required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
                 </Field>
-                <Field label="Move-in Timeframe">
+                <Field label="Preferred Tour Date">
+                  <TextInput required type="date" />
+                </Field>
+                <Field label="Move-in Timeline">
                   <Select value={form.timeframe} onChange={(e) => setForm({ ...form, timeframe: e.target.value })}>
                     <option>Immediately</option>
                     <option>Within 30 days</option>
@@ -172,13 +170,14 @@ function PropertyDetail() {
                   <TextArea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
                 </Field>
                 <button className="mt-2 h-12 rounded-full bg-primary text-sm font-semibold text-primary-foreground shadow-soft">
-                  Send Inquiry (Ref {p.id})
+                  Schedule My Tour (Ref {p.id})
                 </button>
               </form>
             )}
           </div>
         </div>
       </section>
+
 
       {/* SIMILAR */}
       <section className="container-tight pb-16">
