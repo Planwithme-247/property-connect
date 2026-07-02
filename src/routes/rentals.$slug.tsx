@@ -57,7 +57,7 @@ export const Route = createFileRoute("/rentals/$slug")({
 });
 
 function PropertyDetail() {
-  const p = Route.useLoaderData();
+  const p = Route.useLoaderData() as Property;
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", email: "", timeframe: "1-2 months", message: "" });
 
