@@ -25,9 +25,9 @@ function ApplyPage() {
       <section className="border-b border-border bg-secondary/40">
         <div className="container-tight py-10 md:py-14">
           <p className="text-xs font-semibold uppercase tracking-widest text-primary">Rental Application</p>
-          <h1 className="mt-2 font-display text-3xl font-semibold sm:text-4xl md:text-5xl">Apply for your next home</h1>
+          <h1 className="mt-2 font-display text-3xl font-semibold sm:text-4xl md:text-5xl">Apply after your tour</h1>
           <p className="mt-3 max-w-2xl text-muted-foreground">
-            Complete this application to start the qualification process. Our team responds within one business day.
+            Applications are completed <strong>after a scheduled property tour</strong>. A screening fee applies at this step and covers background, credit, and income verification. Our team responds within one business day.
           </p>
         </div>
       </section>
